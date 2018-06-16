@@ -20,33 +20,26 @@ def create_table(name, c):
                 phys_atk integer NOT NULL,
                 mag_atk integer NOT NULL,
                 phys_def integer NOT NULL,
-                mag_def integer NOT NULL,
-                num_of_atks integer NOT NULL,
-                min_dmg integer NOT NULL,
-                max_dmg integer NOT NULL,
-                strength integer NOT NULL
+                mag_def integer NOT NULL
                 )'''.format(name))
 
 
 def populate_table(name, data, c):
-    c.executemany('''INSERT INTO Monsters(name,
+    c.executemany('''INSERT INTO {}(
+          name,
           hp,
           phys_atk,
           mag_atk,
           phys_def,
-          mag_def,
-          num_of_atks,
-          min_dmg,
-          max_dmg,
-          strength)
-          VALUES (?,?,?,?,?,?,?,?,?,?)''', data)
+          mag_def)
+          VALUES (?,?,?,?,?,?)'''.format(name), data)
 
 
 if __name__ == "__main__":
     # Settings
-    csv_file = "monsters.csv"
-    database_name = "monsters.db"
-    table_name = "Monsters"
+    csv_file = "player_classes.csv"
+    database_name = "player_classes.db"
+    table_name = "Classes"
 
     # Load data from CSV
     data = []
@@ -57,7 +50,7 @@ if __name__ == "__main__":
     c = con.cursor()
 
     # Delete previous table
-    c.execute("DROP TABLE Monsters")
+    c.execute("DROP TABLE IF EXISTS {}".format(table_name))
 
     # Create table if it doesnt exist, then populate with data
     create_table(table_name, c)

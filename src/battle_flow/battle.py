@@ -1,7 +1,7 @@
 from time import sleep
 from random import randint
 
-from src.actors.classes import Player
+from src.actors.actors import Player
 from src.battle_flow.attack_round import *
 
 '''==============================
@@ -49,12 +49,12 @@ Select your action (1/2/3/4):
             ''')
 
     if action == '1':
-        if attack_success(offense=p.phys_attack, defense=m.phys_def, d=d):
+        if attack_success(offense=p.phys_atk, defense=m.phys_def, d=d):
             damage(wpn=p.weapon, defender=m, d=d)
 
     elif action == '2':
-        if attack_success(offense=p.mag_attack, defense=m.mag_def, d=d):
-            damage(mag_atk=p.mag_attack, defender=m, d=d)
+        if attack_success(offense=p.mag_atk, defense=m.mag_def, d=d):
+            damage(mag_atk=p.mag_atk, defender=m, d=d)
 
     elif action == '3':
         m.show_stats()
@@ -70,10 +70,10 @@ Select your action (1/2/3/4):
 '''Monster turn'''
 def monster_turn(m, p, d):
     if p.phys_def > p.mag_def:
-        if attack_success(offense=m.mag_attack, defense=p.mag_def, d=d):
-            damage(mag_atk=m.mag_attack, defender=p, d=d)
+        if attack_success(offense=m.mag_atk, defense=p.mag_def, d=d):
+            damage(mag_atk=m.mag_atk, defender=p, d=d)
     else:
-        if attack_success(offense=m.phys_attack, defense=p.phys_def, d=d):
+        if attack_success(offense=m.phys_atk, defense=p.phys_def, d=d):
             damage(wpn=m.weapon, defender=p, d=d)
 
 

@@ -1,5 +1,5 @@
-'''Attempt to land an attack'''
 def attack_success(d, offense=1, defense=1):
+    """Attempt to land an attack. Offense is attacker's, defense is defender's"""
     atk = d.roll(1, 20) + offense
     if atk > defense:
         print("Attack success!")
@@ -22,5 +22,7 @@ def damage(defender, d, wpn=None, mag_atk=0):
     defender.hp -= dmg
     if defender.hp < 0:
         print("{} took {} damage. He is dead!".format(defender.name, dmg))
+    elif dmg < 0:
+        print("{} was resistant to your spell.".format(defender.name))
     else:
         print("{} took {} damage. He has {} hp remaining.".format(defender.name, dmg, defender.hp))

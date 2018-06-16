@@ -1,9 +1,6 @@
-from src.actors.classes import *
+from src.actors.actors import *
 from src.items.items import *
 from src.battle_flow.battle import *
-
-import sqlite3
-import os
 
 
 
@@ -12,6 +9,21 @@ import os
 MAIN
 ==============================='''
 if __name__ == "__main__":
-    x = Player("Bob")
-    y = Monster("Abominable Yeti")
-    print(vars(y))
+    d = Dice()
+    x = Player(name="Bob", specialization="Ranger")
+    y = Monster(name="Abominable Yeti")
+
+    print('''
+    {}
+    {}
+    {}
+    -----'''.format(x.phys_def, x.mag_def, x.hp))
+
+    x.equip_item(item=Weapon('Whip'))
+    x.equip_item(item=Armor('Dragonscale'))
+
+    print('''
+    {}
+    {}
+    {}
+    -----'''.format(x.phys_def, x.mag_def, x.hp))
