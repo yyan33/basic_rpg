@@ -1,0 +1,6 @@
+,MonsterRoom('Ape'),,,,,
+,EmptyRoom(),,EmptyRoom(),EmptyRoom(),EmptyRoom(),EndRoom()
+,EmptyRoom(),,MonsterRoom('Ape'),,MonsterRoom('Ape'),
+MonsterRoom('Ape'),MonsterRoom('Ape'),EmptyRoom(),MonsterRoom('Awakened Tree'),,,
+,EmptyRoom('Whip'),,EmptyRoom(),,,
+,StartRoom(),,,,,

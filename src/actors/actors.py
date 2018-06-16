@@ -1,4 +1,3 @@
-import sqlite3
 import os.path
 from src.items.items import *
 

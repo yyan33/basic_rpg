@@ -1,0 +1,5 @@
+name,min,max,num_of_atks
+Broadsword,5,20,1
+Whip,1,12,3
+Bazooka,18,25,1
+undefined,0,0,0

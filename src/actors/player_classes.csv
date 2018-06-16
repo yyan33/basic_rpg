@@ -1,0 +1,10 @@
+Name,HP,Physical Attack,Magic Attack,Physical Defense,Magic Defense
+Fighter,32,8,0,12,6
+Cleric,20,4,0,0,2
+Ranger,50,6,10,20,4
+Rogue,18,4,1,6,4
+Assassin,8,4,0,8,0
+Archmage,64,2,20,1,16
+Bard,100,4,0,14,0
+Knight,43,2,8,14,6
+Barbarian,5,1,0,1,1

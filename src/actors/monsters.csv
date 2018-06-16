@@ -1,0 +1,11 @@
+Name,HP,Physical Attack,Magic Attack,Physical Defense,Magic Defense,Num of Attacks,Min Damage,Max Damage,Strength
+Abominable Yeti,32,8,0,12,6,1,8,12,2
+Acolyte,20,4,0,0,2,1,1,2,1
+Air Elemental,50,6,10,20,4,1,3,6,3
+Animated Armor,18,4,1,6,4,1,2,6,1
+Ape,8,4,0,8,0,1,2,6,1
+Archmage,64,2,20,1,16,1,1,2,4
+Awakened Tree,100,4,0,14,0,1,10,14,2
+Banshee,43,2,8,14,6,2,4,8,3
+Bat,5,1,0,1,1,1,1,4,1
+undefined,0,0,0,0,0,0,0,0,0
