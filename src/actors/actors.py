@@ -63,7 +63,6 @@ class Player(Character):
         super().__init__(name)
         self.specialization = specialization
         self.flee = False
-        self.location = []
 
         # Load class stats
         self.fetch_stats(name=specialization, actor="pc")
@@ -71,6 +70,8 @@ class Player(Character):
         # Equipment
         self.weapon = Weapon()
         self.armor = Armor()
+        self.equip_item(Weapon())
+        self.equip_item(Armor())
 
     def attempt_flee(self, enemy, d):
         if d.roll(1, 20) > enemy.phys_atk:

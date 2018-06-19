@@ -1,5 +1,5 @@
-name,phys_def,mag_def
-Full Plate,10,2
-Wizard Robe,2,10
-Dragonscale,12,12
-undefined,0,0
+name,display,phys_def,mag_def
+a_full_plate,Full Plate,10,2
+a_wizard_robe,Wizard Robe,2,10
+a_dragonscale,Dragonscale,12,12
+a_undefined,Undefined,0,0

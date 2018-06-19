@@ -4,8 +4,9 @@ import sqlite3
 
 class Item:
 
-    def __init__(self):
-        pass
+    def __init__(self, name):
+        self.name = name
+        self.display = "undefined"
 
     @staticmethod
     def load_stats(self, name="undefined", slot="weapon"):
@@ -27,28 +28,39 @@ class Item:
         c.close()
         return data
 
+    def wants_to_equip(self):
+        player_choice = input("Would you like to equip it?")
+        if player_choice.upper() == 'Y':
+            return True
+        elif player_choice.upper() == 'N':
+            return False
+        else:
+            print("Invalid input!")
+            return self.ask_if_equip()
+
 
 class Weapon(Item):
 
-    def __init__(self, name="undefined"):
-        super().__init__()
-        self.max = 0
-        self.min = 0
-        self.num_of_atks = 0
+    def __init__(self, name="w_undefined"):
+        super().__init__(name)
+        self.max = 1
+        self.min = 1
+        self.num_of_atks = 1
 
         stats = self.load_stats(self, name=name, slot='weapon')
         self.set_stats(stats=stats)
 
     def set_stats(self, stats):
-        self.min = stats[2]
-        self.max = stats[3]
-        self.num_of_atks = stats[4]
+        self.display = stats[2]
+        self.min = stats[3]
+        self.max = stats[4]
+        self.num_of_atks = stats[5]
 
 
 class Armor(Item):
 
-    def __init__(self, name="undefined"):
-        super().__init__()
+    def __init__(self, name="a_undefined"):
+        super().__init__(name)
         self.phys_def = 0
         self.mag_def = 0
 
@@ -56,6 +68,7 @@ class Armor(Item):
         self.set_stats(stats=stats)
 
     def set_stats(self, stats):
-        self.phys_def = stats[2]
-        self.mag_def = stats[3]
+        self.display = stats[2]
+        self.phys_def = stats[3]
+        self.mag_def = stats[4]
 

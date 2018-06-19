@@ -1,5 +1,5 @@
-name,min,max,num_of_atks
-Broadsword,5,20,1
-Whip,1,12,3
-Bazooka,18,25,1
-undefined,0,0,0
+name,display,min,max,num_of_atks
+w_broadsword,Broadsword,5,20,1
+w_whip,Whip,1,12,3
+w_bazooka,Bazooka,18,25,1
+w_undefined,Undefined,1,10,1

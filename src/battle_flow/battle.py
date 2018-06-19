@@ -13,7 +13,7 @@ def battle(pc, npc, d):
     attacker = pc
     defender = npc
 
-    while attacker.hp > 0:
+    while attacker.hp > 0 and not pc.flee:
         if attacker.flee:
             attacker.just_fled()
             break
@@ -28,6 +28,7 @@ def battle(pc, npc, d):
 ===============================''')
             sleep(1)
     print("Battle ended!")
+    pc.just_fled()
 
 
 '''Turn'''
@@ -50,7 +51,7 @@ Select your action (1/2/3/4):
 
     if action == '1':
         if attack_success(offense=p.phys_atk, defense=m.phys_def, d=d):
-            damage(wpn=p.weapon, defender=m, d=d)
+            damage(min=p.min_dmg, max=p.max_dmg, num_of_atks=p.num_of_atks, defender=m, d=d)
 
     elif action == '2':
         if attack_success(offense=p.mag_atk, defense=m.mag_def, d=d):
@@ -74,7 +75,7 @@ def monster_turn(m, p, d):
             damage(mag_atk=m.mag_atk, defender=p, d=d)
     else:
         if attack_success(offense=m.phys_atk, defense=p.phys_def, d=d):
-            damage(wpn=m.weapon, defender=p, d=d)
+            damage(num_of_atks=m.num_of_attacks, min=m.min_dmg, max=m.max_dmg, defender=p, d=d)
 
 
 '''==============================

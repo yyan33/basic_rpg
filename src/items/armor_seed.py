@@ -16,6 +16,7 @@ def create_table(name, c):
     c.execute('''CREATE TABLE IF NOT EXISTS {} (
                 id integer PRIMARY KEY AUTOINCREMENT,
                 name text NOT NULL,
+                display text NOT NULL,
                 phys_def integer NOT NULL,
                 mag_def integer NOT NULL
                 )'''.format(name))
@@ -24,9 +25,10 @@ def create_table(name, c):
 def populate_table(name, data, c):
     c.executemany('''INSERT INTO {}(
           name,
+          display,
           phys_def,
           mag_def
-          ) VALUES (?,?,?)'''.format(name), data)
+          ) VALUES (?,?,?,?)'''.format(name), data)
 
 
 if __name__ == "__main__":
