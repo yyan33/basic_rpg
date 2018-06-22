@@ -11,6 +11,7 @@ class Room:
         else:
             self.loot = None
         self.text = text
+        self.visited = False
 
     def show_intro(self):
         print(self.text)
@@ -36,9 +37,9 @@ class Room:
 
 
 class MonsterRoom(Room):
-    def __init__(self, loot=None, name=Monster()):
+    def __init__(self, loot=None, name='undefined', strength='1'):
         super().__init__(loot)
-        self.monster = Monster(name='{}'.format(name))
+        self.monster = Monster(strength='{}'.format(strength))
 
 
 class EmptyRoom(Room):

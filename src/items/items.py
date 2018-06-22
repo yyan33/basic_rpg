@@ -36,7 +36,7 @@ class Item:
             return False
         else:
             print("Invalid input!")
-            return self.ask_if_equip()
+            return self.wants_to_equip()
 
 
 class Weapon(Item):

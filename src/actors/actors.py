@@ -1,5 +1,6 @@
 import os.path
 from src.items.items import *
+from random import choice
 
 
 class Character:
@@ -20,7 +21,7 @@ class Character:
         # Name
         self.name = name
 
-    def fetch_stats(self, name="undefined", actor="pc"):
+    def fetch_stats(self, name="undefined", actor="pc", strength="1"):
         """Load stats from database with given name"""
 
         db_name = {'npc': 'monsters.db', 'pc': 'player_classes.db'}
@@ -31,20 +32,28 @@ class Character:
         con = sqlite3.connect(abs_file_path)
         c = con.cursor()
 
-        # Find entry in db
-        c.execute("SELECT * FROM {} WHERE name IS '{}'".format(table_name[actor], name))
-        data = c.fetchone()
+        # Find entry in db by name
+        if actor == 'pc':
+            c.execute("SELECT * FROM {} WHERE name IS '{}'".format(table_name[actor], name))
+            data = c.fetchone()
+        elif actor == 'npc':
+            c.execute("SELECT * FROM {} WHERE strength is '{}'".format(table_name[actor], strength))
+            data = c.fetchall()
+            data = choice(data)
+
 
         # Load stats
         if actor == 'pc':
-            self.set_stats(max_hp=data[2], phys_atk=data[3], mag_atk=data[4], phys_def=data[5], mag_def=data[6])
+            self.set_stats(max_hp=data[2], phys_atk=data[3], mag_atk=data[4],
+                           phys_def=data[5], mag_def=data[6], name=self.name)
         else:
             self.set_stats(max_hp=data[2], phys_atk=data[3], mag_atk=data[4], phys_def=data[5],
-                  mag_def=data[6], num_of_atks=data[7], min_dmg=data[8], max_dmg=data[9])
+                  mag_def=data[6], num_of_atks=data[7], min_dmg=data[8], max_dmg=data[9], name=data[1])
+
         # Close connection
         c.close()
 
-    def set_stats(self, max_hp=None, phys_atk=None, mag_atk=None, phys_def=None,
+    def set_stats(self, name="undefined", max_hp=None, phys_atk=None, mag_atk=None, phys_def=None,
                   mag_def=None, num_of_atks=None, min_dmg=None, max_dmg=None):
         self.max_hp = max_hp
         self.hp = max_hp
@@ -55,6 +64,7 @@ class Character:
         self.num_of_atks = num_of_atks
         self.min_dmg = min_dmg
         self.max_dmg = max_dmg
+        self.name = name
 
 
 class Player(Character):
@@ -104,12 +114,12 @@ class Player(Character):
 class Monster(Character):
     """Non-playable characters"""
 
-    def __init__(self, name="undefined", strength=1):
+    def __init__(self, name="undefined", strength='1'):
         super().__init__(name)
         self.strength = strength
 
         # Load monster stats
-        self.fetch_stats(name=name, actor="npc")
+        self.fetch_stats(name=name, actor="npc", strength=strength)
 
     def show_stats(self):
         """Prints out monster's stats when inspected by player"""

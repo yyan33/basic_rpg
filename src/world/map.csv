@@ -1,6 +1,6 @@
-StartRoom(),EmptyRoom(),,,,,
-MonsterRoom('Ape'),EmptyRoom('w_whip'),,EmptyRoom(),EmptyRoom(),EmptyRoom(),EndRoom()
-,EmptyRoom('a_dragonscale'),,MonsterRoom('Ape'),,,
-,MonsterRoom('Ape'),EmptyRoom(),MonsterRoom('Ape'),,,
-MonsterRoom('Ape'),EmptyRoom(),EmptyRoom(),,,,
-MonsterRoom('Ape'),,,,,,
+StartRoom(),EmptyRoom('w_bazooka'),,,,,
+MonsterRoom('1'),EmptyRoom('w_whip'),,EmptyRoom(),EmptyRoom(),EmptyRoom(),EndRoom()
+,EmptyRoom('a_dragonscale'),,MonsterRoom('1'),,,
+,MonsterRoom('1'),EmptyRoom(),MonsterRoom('1'),,,
+MonsterRoom('1'),EmptyRoom(),EmptyRoom(),,,,
+MonsterRoom('2'),,,,,,

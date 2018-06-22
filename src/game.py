@@ -5,7 +5,7 @@ from src.world.world_map import *
 from src.world.navigation import *
 from src.world.rooms import *
 
-
+from random import choice
 
 
 '''============================
@@ -14,16 +14,13 @@ MAIN
 if __name__ == "__main__":
     d = Dice()
     x = Player(name="Bob", specialization="Ranger")
-    y = Monster(name="Abominable Yeti")
+    y = Monster(strength="2")
 
     world = World('world/map.csv', 'world/room_text.csv')
     # print_map(world)
-
     nav = Navigator(world)
     while True:
         nav.change_rooms()
         interact_with_room(nav.current_room, x)
-
-    pass
 
 

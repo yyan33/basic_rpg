@@ -60,13 +60,17 @@ class Navigator:
 
 def interact_with_room(room, player):
     room.show_intro()
-    if isinstance(room, EndRoom):
-        room.end_game()
-    elif isinstance(room, MonsterRoom):
-        battle(pc=player, npc=room.monster, d=Dice())
-    #     If room has loot, display it
-    if room.loot:
-        loot = room.loot_sequence()
-        if loot.wants_to_equip():
-            player.equip_item(loot)
-            print("Equipped.")
+    if room.visited:
+        print("You have already been here.")
+    else:
+        room.visited = True
+        if isinstance(room, EndRoom):
+            room.end_game()
+        elif isinstance(room, MonsterRoom):
+            battle(pc=player, npc=room.monster, d=Dice())
+        #     If room has loot, display it
+        if room.loot:
+            loot = room.loot_sequence()
+            if loot.wants_to_equip():
+                player.equip_item(loot)
+                print("Equipped.")
