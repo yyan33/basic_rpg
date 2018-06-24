@@ -72,3 +72,37 @@ class Armor(Item):
         self.phys_def = stats[3]
         self.mag_def = stats[4]
 
+
+def get_item_list():
+    """Load list of all available items"""
+
+    db_name = {'weapon': 'weapons.db', 'armor': 'armors.db'}
+    table_name = {'weapon': 'Weapons', 'armor': 'Armors'}
+
+    # Connect to database
+    abs_file_path = os.path.join(os.path.dirname(__file__), db_name['weapon'])
+    con = sqlite3.connect(abs_file_path)
+    c = con.cursor()
+
+    # Find entry in db
+    c.execute("SELECT * FROM {} WHERE name IS NOT 'w_undefined'".format(table_name['weapon']))
+    weapon_data = c.fetchall()
+
+    # Close connection
+    c.close()
+
+    # ARMOR
+    # Connect to database
+    abs_file_path = os.path.join(os.path.dirname(__file__), db_name['armor'])
+    con = sqlite3.connect(abs_file_path)
+    c = con.cursor()
+
+    # Find entry in db
+    c.execute("SELECT * FROM {} WHERE name IS NOT 'a_undefined'".format(table_name['armor']))
+    armor_data = c.fetchall()
+
+    # Close connection
+    c.close()
+
+    item_list = weapon_data + armor_data
+    return item_list

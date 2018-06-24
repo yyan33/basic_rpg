@@ -1,12 +1,12 @@
 from src.actors.actors import Monster
 from src.items.items import *
+from random import choice
 
 
 class Room:
 
     def __init__(self, loot_name=None, text=""):
         if loot_name:
-            print(loot_name)
             self.loot = self.load_loot(loot_name)
         else:
             self.loot = None
@@ -54,6 +54,7 @@ class StartRoom(Room):
                     '''
         self.show_intro()
 
+
 class EndRoom(Room):
     def __init__(self):
         super().__init__()
@@ -65,3 +66,20 @@ class EndRoom(Room):
     @staticmethod
     def end_game():
         quit()
+
+
+def generate_random_room():
+    loot = None
+    has_loot = choice([True, False])
+    if has_loot:
+        items = get_item_list()
+        loot = choice(items)[1]
+
+    is_monster_room = choice([True, False])
+    if is_monster_room:
+        strength = choice(['1', '2'])
+        new_room = MonsterRoom(strength=strength, loot=loot)
+    else:
+        new_room = EmptyRoom(loot=loot)
+
+    return new_room

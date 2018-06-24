@@ -18,9 +18,12 @@ if __name__ == "__main__":
 
     world = World('world/map.csv', 'world/room_text.csv')
     # print_map(world)
-    nav = Navigator(world)
-    while True:
-        nav.change_rooms()
-        interact_with_room(nav.current_room, x)
+    x = generate_random_room()
+    print(x)
+    print(vars(x))
+    # nav = Navigator(world)
+    # while True:
+    #     nav.change_rooms()
+    #     interact_with_room(nav.current_room, x)
 
 

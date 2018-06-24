@@ -9,7 +9,7 @@ Work in progress basic text RPG. Currently getting functions working before both
 * Character and equipment stats stored and loaded from local SQLite database
 #####World
 * Start, End, Monster, and Empty Rooms
-* Monster Rooms possess a monster for the player to defeat
+* Monster Rooms possess a monster of chosen strength for the player to defeat
 * Empty Rooms are purely for dialogue/atmosphere
 * Every Room has an entry text
 * Loot (weapons/armor) can optionally be contained in either type of room
@@ -26,7 +26,6 @@ Work in progress basic text RPG. Currently getting functions working before both
 * Add more complex stats (elemental resistances, class-specific equipmet, etc)
 * Add spells & abilities with unique effects
 * Add level progression
-* Add ability to generate a random monster of a given strength level
 #####World
 * Add flag for room that has already been entered
 * Allow for procedurally generated maps: give dimensions and generate a csv with a connected path of rooms from start to end
