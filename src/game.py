@@ -16,11 +16,8 @@ if __name__ == "__main__":
     x = Player(name="Bob", specialization="Ranger")
     y = Monster(strength="2")
 
-    world = World('world/map.csv', 'world/room_text.csv')
+    world = World(num_of_row=4, num_of_col=8, min_num_of_rooms=20)
     # print_map(world)
-    x = generate_random_room()
-    print(x)
-    print(vars(x))
     # nav = Navigator(world)
     # while True:
     #     nav.change_rooms()

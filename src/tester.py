@@ -1,14 +1,8 @@
-import csv
+from itertools import chain
 
-class balls:
+x = [[1, 2, 3, 4], [5], [6, 7]]
 
-    def __init__(self):
-        self.location = [0, 0]
-
-    def bla(self):
-        print(self.location[0])
-
-csv_file = "world/room_text.csv"
-map = list(csv.reader(open(csv_file)))
-for i in map:
-    print(i)
+for i in range(len(x)):
+    for j in range(len(x[i])):
+        # print("i: {} j: {}".format(i,j))
+        print(x[i][j])
