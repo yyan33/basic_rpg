@@ -1,15 +1,26 @@
 import csv
 import re
 from src.world.rooms import *
+from src.world.generate_world import generate_random_map
+from itertools import chain
 
 
 class World:
 
-    def __init__(self, map_file, rooms_text_file):
-        self.map = self.load_map(map_file)
-        self.rooms = self.populate_rooms(self.map)
-        room_texts = self.load_room_text(rooms_text_file)
-        self.set_room_text(room_texts)
+    def __init__(self, map_file=None, rooms_text_file=None, num_of_row=0, num_of_col=0, min_num_of_rooms=0):
+        if map_file:
+            self.map = self.load_map(map_file)
+            room_texts = self.load_room_text(rooms_text_file)
+            self.set_room_text(room_texts)
+            self.rooms = self.populate_loaded_rooms(self.map)
+        else:
+            self.map = generate_random_map(max_row=num_of_row, max_col=num_of_col, min_num_of_rooms=min_num_of_rooms)
+            for p in self.map:
+                print(p)
+            self.map = self.create_random_rooms_data(self.map)
+            for k in self.map:
+                print(k)
+
 
     @staticmethod
     def load_map(csv_file):
@@ -17,7 +28,7 @@ class World:
         return map
 
     @staticmethod
-    def populate_rooms(map):
+    def populate_loaded_rooms(map):
         rooms = []
 
         # Setup regex expression
@@ -70,6 +81,26 @@ class World:
                 # if the room exists
                 if self.rooms[j][i]:
                     self.rooms[j][i].text = data[j][i]
+
+    @staticmethod
+    def create_random_rooms_data(map):
+        result = []
+        # for row
+        for i in range(len(map)):
+            # for col
+            temp_row = []
+            for j in range(len(map[i])):
+                e = map[i][j]
+                if e == 'R':
+                    temp_row.append(generate_random_room())
+                elif e == '':
+                    temp_row.append(None)
+                elif e == 'S':
+                    temp_row.append(StartRoom())
+                elif e == 'E':
+                    temp_row.append(EndRoom())
+            result.append(temp_row)
+        return result
 
     # For debugging purposes
     def print_map(self, x, y):
