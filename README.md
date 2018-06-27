@@ -15,7 +15,7 @@ Work in progress basic text RPG. Currently getting functions working before both
 * Loot (weapons/armor) can optionally be contained in either type of room
 * Load and populate map from local csv file
 * Procedurally generate map: give dimensions and minimum # of rooms and it will generate a complete map
-###Gameplay
+### Gameplay
 * Players can navigate through the map between rooms
 * Players can battle monsters
 * Battles are turn-based and use simple attack and defense stats

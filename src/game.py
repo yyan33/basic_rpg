@@ -13,14 +13,15 @@ MAIN
 ==============================='''
 if __name__ == "__main__":
     d = Dice()
-    x = Player(name="Bob", specialization="Ranger")
+    x = Player(name="Bob", specialization="badass")
     y = Monster(strength="2")
 
-    world = World(num_of_row=4, num_of_col=8, min_num_of_rooms=20)
-    # print_map(world)
-    # nav = Navigator(world)
-    # while True:
-    #     nav.change_rooms()
-    #     interact_with_room(nav.current_room, x)
+    # world = World(map_file='world/map.csv', rooms_text_file='world/room_text.csv')
+    world = World(num_of_col=6, num_of_row=7, min_num_of_rooms=20)
+    nav = Navigator(world)
+
+    while True:
+        nav.change_rooms()
+        interact_with_room(nav.current_room, x)
 
 

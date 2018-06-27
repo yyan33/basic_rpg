@@ -69,7 +69,7 @@ class Character:
 
 class Player(Character):
     """Player Controlled Characters"""
-    def __init__(self, name="undefined", specialization="Fighter"):
+    def __init__(self, name="undefined", specialization="badass"):
         super().__init__(name)
         self.specialization = specialization
         self.flee = False

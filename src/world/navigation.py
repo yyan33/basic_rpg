@@ -19,13 +19,12 @@ class Navigator:
     def check_exits(self):
         exits = []
         # Check if on boundary and if the room exists
-        self.world.print_map(self.row_cord, self.col_cord)
 
         # North
         if self.row_cord - 1 >= 0 and self.world.rooms[(self.row_cord - 1)][self.col_cord]:
                 exits.append('N')
         # South
-        if self.row_cord + 1 < self.y_max and self.world.rooms[(self.row_cord + 1)][self.col_cord]:
+        if self.row_cord + 1 < self.y_max + 1 and self.world.rooms[(self.row_cord + 1)][self.col_cord]:
                 exits.append('S')
         # East
         if self.col_cord + 1 < self.x_max:
@@ -34,6 +33,8 @@ class Navigator:
         # West
         if self.col_cord - 1 >= 0 and self.world.rooms[self.row_cord][(self.col_cord - 1)]:
                 exits.append('W')
+
+        self.world.print_map(self.row_cord, self.col_cord)
         return exits
 
     def select_room(self, exit_options):

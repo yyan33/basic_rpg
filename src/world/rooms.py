@@ -1,6 +1,7 @@
 from src.actors.actors import Monster
 from src.items.items import *
 from random import choice
+from random import randint
 
 
 class Room:
@@ -52,6 +53,7 @@ class StartRoom(Room):
         super().__init__()
         self.text = ''' You wake up in a dark room. You find yourself with a simple, worn sword. The only way out is forward.
                     '''
+        self.visited = True
         self.show_intro()
 
 
@@ -70,8 +72,8 @@ class EndRoom(Room):
 
 def generate_random_room():
     loot = None
-    has_loot = choice([True, False])
-    if has_loot:
+    has_loot = randint(1,10)
+    if has_loot >= 7:
         items = get_item_list()
         loot = choice(items)[1]
 

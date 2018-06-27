@@ -21,12 +21,12 @@ def battle(pc, npc, d):
             turn(attacker, defender, d)
             # swap whose turn it is
             attacker, defender = defender, attacker
-            sleep(1)
+            # sleep(1)
             print('''
 ===============================
         CHANGE TURNS
 ===============================''')
-            sleep(1)
+            # sleep(1)
     print("Battle ended!")
     pc.just_fled()
 
@@ -89,5 +89,5 @@ class Dice:
     def roll(self, min, max):
         result = randint(min, max)
         print("\nDice roll: {}".format(result))
-        sleep(1)
+        # sleep(1)
         return result
