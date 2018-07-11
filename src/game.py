@@ -7,9 +7,8 @@ from src.world.rooms import *
 
 from random import choice
 
-
 '''============================
-MAIN
+MAIN - Hello World
 ==============================='''
 if __name__ == "__main__":
     d = Dice()
