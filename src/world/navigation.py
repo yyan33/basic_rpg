@@ -1,5 +1,5 @@
 ## Yi made this comment in July 11 - 2nd time
-#wtf is going on???
+#what is the meaning of branch master you asshole
 from src.world.world_map import *
 from src.battle_flow.battle import *
 
